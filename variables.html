@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+:root {
+  --text-color: blue;
+  --font-size: 50px;
+}
+
+.box {
+  /* Local CSS Variable */
+  --box-color: rgb(183, 255, 0);
+
+  color: var(--text-color);  
+  font-size: var(--font-size); 
+  background-color: var(--box-color);
+  padding: 20px;
+}
+.boxes {
+  color: var(--text-color);   
+  /* --box-color: rgb(73, 45, 233); */
+  background-color: var(--box-color,rgb(72, 255, 255)); 
+  padding: 30px;
+  --font-size:50px;
+ 
+}
+
+</style>
+</head>
+<body>
+
+<div class="box">
+  Hello CSS Variables 1
+</div>
+<div class="boxes">
+    Hello CSS Variables 2
+</div>
+<div class="box">
+  Hello CSS Variables 3
+</body>
+</html>

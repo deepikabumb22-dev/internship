@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student ID Card</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #74ebd5, #9face6);
+            font-family: Arial, sans-serif;
+        }
+        .id-card {
+            width: 750px;
+            margin: 40px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        .id-card:hover {
+            transform: scale(1.02);
+        }
+        .header {
+            background: linear-gradient(to right, #003366, #0059b3);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+        .header h2 {
+            margin-top: 5px;
+            font-weight: normal;
+            font-size: 22px;
+        }
+        .content {
+            display: flex;
+            align-items: center;
+            padding: 30px;
+        }
+        .photo {
+            text-align: center;
+        }
+        .photo img {
+            width: 180px;
+            height: 220px;
+            border: 5px solid #0059b3;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .details {
+            margin-left: 40px;
+            font-size: 22px;
+            line-height: 2;
+        }
+        .details b {
+            color: #003366;
+        }
+        .footer {
+            background-color: #f0f7ff;
+            text-align: center;
+            padding: 15px;
+            border-top: 2px solid #0059b3;
+        }
+        .footer p {
+            margin: 5px;
+            color: #003366;
+            font-weight: bold;
+        }
+        .warning {
+            color: red;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="id-card">
+
+        <div class="header">
+            <h1>Sanjay Ghodawat Institute</h1>
+            <h2>Student Identity Card</h2>
+        </div>
+
+        <div class="content">
+
+            <div class="photo">
+                <img src="us.jpg" alt="Student Photo">
+            </div>
+
+            <div class="details">
+                <p><b>Name:</b> Deepika Bumb</p>
+                <p><b>Roll No:</b> 10</p>
+                <p><b>Course:</b> Web Development</p>
+                <p><b>Blood Group:</b> O+</p>
+                <p><b>Contact No:</b> 9529218851</p>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <p>Valid for Academic Year 2025–2026</p>
+    
+        </div>
+
+    </div>
+
+</body>
+</html>

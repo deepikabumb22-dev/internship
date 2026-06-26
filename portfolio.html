@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Portfolio</title>
+<style>
+    body {
+        background: url("bg.jpg") no-repeat center center fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        color: #333;
+    }
+
+    center {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        color: #8e44ad;
+    }
+
+    img {
+        border-radius: 50%;
+        border: 5px solid #8e44ad;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    nav {
+        margin-top: 15px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #3498db;
+        font-weight: bold;
+        margin: 0 10px;
+    }
+
+    nav a:hover {
+        color: #8e44ad;
+    }
+
+    fieldset {
+        background: rgba(255, 255, 255, 0.92);
+        border: 2px solid #8e44ad;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    legend {
+        font-size: 18px;
+        color: #8e44ad;
+        font-weight: bold;
+        padding: 0 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    th {
+        background-color: #8e44ad;
+        color: white;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+
+    ul li, ol li {
+        margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    input[type="submit"] {
+        background-color: #8e44ad;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #6c3483;
+    }
+
+    footer {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 15px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+</style>
+</head>
+
+<body>
+
+    <center>
+        <h1>My Portfolio</h1>
+
+        <img src="us.jpg"
+             alt="Profile Photo"
+             width="150" height="150">
+
+        <h2>Deepika</h2>
+
+        <p>💻 Computer Science Student | 🌐 Web Developer | 🎬 Content Creator</p>
+
+        <nav>
+            <a href="#about">About Me</a> |
+            <a href="#achievements">Achievements</a> |
+            <a href="#learning">Learning</a> |
+            <a href="#skills">Skills</a> |
+            <a href="#goals">Goals</a> |
+            <a href="#contact">Contact</a>
+        </nav>
+    </center>
+
+    <hr>
+
+    <fieldset id="about">
+        <legend><b>About Me</b></legend>
+
+        <p>
+            Hello! I am Deepika. I am interested in web development,
+            programming, and technology. I enjoy learning new concepts
+            and creating simple websites.
+        </p>
+    </fieldset>
+
+    <fieldset id="achievements">
+        <legend><b>My Achievements</b></legend>
+
+        <ul>
+            <li>Completed HTML Basics Course.</li>
+            <li>Participated in Coding Competitions.</li>
+            <li>Created Simple Web Pages.</li>
+            <li>Learned Basic Programming Concepts.</li>
+        </ul>
+    </fieldset>
+
+    <fieldset id="learning">
+        <legend><b>What I Have Learned</b></legend>
+
+        <ol>
+            <li>HTML</li>
+            <li>CSS Basics</li>
+            <li>JavaScript Basics</li>
+            <li>C Programming</li>
+            <li>Database Management System (DBMS)</li>
+        </ol>
+    </fieldset>
+
+    <fieldset id="skills">
+        <legend><b>My Skills</b></legend>
+
+        <table border="1">
+            <tr>
+                <th>Skill</th>
+                <th>Level</th>
+            </tr>
+
+            <tr>
+                <td>HTML</td>
+                <td>Beginner</td>
+            </tr>
+
+            <tr>
+                <td>C Programming</td>
+                <td>Intermediate</td>
+            </tr>
+
+            <tr>
+                <td>DBMS</td>
+                <td>Beginner</td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <fieldset>
+        <legend><b>Education</b></legend>
+
+        <table border="1">
+            <tr>
+                <th>Course</th>
+                <th>Institute</th>
+            </tr>
+
+            <tr>
+                <td>diploma in computer Science</td>
+                <td>SGI,Polytechnic</td>
+            </tr>
+        </table>
+    </fieldset> 
+
+    <fieldset>
+        <legend><b>Projects</b></legend>
+
+        <ol>
+            <li>Portfolio Website</li>
+            <li>Student Management System</li>
+            <li>E-Commerce Website</li>
+        </ol>
+    </fieldset>
+
+    <fieldset id="goals">
+        <legend><b>My Goals</b></legend>
+
+        <p>
+            I want to become a skilled software developer and create
+            useful websites and applications that help people in their
+            daily lives.
+        </p>
+    </fieldset>
+
+    <fieldset id="contact">
+        <legend><b>Contact Me</b></legend>
+
+        <form>
+            Name:<br>
+            <input type="text" placeholder="enter your Name"><br><br>
+
+            Email:<br>
+            <input type="email" placeholder="enter your Email"><br><br>
+
+            Message:<br>
+            <textarea rows="4" cols="30" placeholder="Message here!"></textarea><br><br>
+
+            <input type="submit" value="Send Message">
+        </form>
+
+        <p>Email: deepikabumb@gmail.com</p>
+        <p>Phone: 9172250510</p>
+    </fieldset>
+
+    <footer>
+        <hr>
+
+        <p>&copy; 2026 Deepika. All Rights Reserved.</p>
+
+        <p>Thank You for Visiting My Portfolio!</p>
+    </footer>
+
+</body>
+</html>
