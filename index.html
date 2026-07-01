@@ -1,13 +1,100 @@
- <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Text Formatting</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Booking Interface</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#f2f2f2;
+        }
+
+        .container{
+            width:400px;
+            margin:50px auto;
+            background:white;
+            padding:25px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align:center;
+            color:#0077b6;
+            margin-bottom:20px;
+        }
+
+        label{
+            font-weight:bold;
+            display:block;
+            margin-top:12px;
+        }
+
+        input,select{
+            width:100%;
+            padding:10px;
+            margin-top:5px;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            margin-top:20px;
+            background:#0077b6;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        button:hover{
+            background:#005f8d;
+        }
+    </style>
+
 </head>
+
 <body>
-    <h1>Main Heading</h1>
-    <h2>Sub Heading</h2>
-    <p>This is <b>bold</b> text.</p>
-    <p>This is <i>italic</i> text.</p>
-    <p>This is a new line.<br>Line break used here.</p>
+
+<div class="container">
+
+    <h2>🚌 Bus Booking</h2>
+
+    <form>
+
+        <label>From</label>
+        <input type="text" placeholder="Enter Source">
+
+        <label>To</label>
+        <input type="text" placeholder="Enter Destination">
+
+        <label>Date of Journey</label>
+        <input type="date">
+
+        <label>Number of Passengers</label>
+        <select>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+
+        <button type="submit">Search Buses</button>
+
+    </form>
+
+</div>
+
 </body>
 </html>
