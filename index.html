@@ -1,100 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bus Booking Interface</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bus Booking System</title>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial, sans-serif;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
 
-        body{
-            background:#f2f2f2;
-        }
+body{
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
 
-        .container{
-            width:400px;
-            margin:50px auto;
-            background:white;
-            padding:25px;
-            border-radius:10px;
-            box-shadow:0 0 10px rgba(0,0,0,0.2);
-        }
+.container{
+    width:420px;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 20px rgba(0,0,0,.2);
+}
 
-        h2{
-            text-align:center;
-            color:#0077b6;
-            margin-bottom:20px;
-        }
+h2{
+    text-align:center;
+    color:#0077b6;
+    margin-bottom:20px;
+}
 
-        label{
-            font-weight:bold;
-            display:block;
-            margin-top:12px;
-        }
+label{
+    display:block;
+    margin-top:12px;
+    font-weight:bold;
+}
 
-        input,select{
-            width:100%;
-            padding:10px;
-            margin-top:5px;
-            border:1px solid #ccc;
-            border-radius:5px;
-        }
+input,select{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
 
-        button{
-            width:100%;
-            padding:12px;
-            margin-top:20px;
-            background:#0077b6;
-            color:white;
-            border:none;
-            border-radius:5px;
-            cursor:pointer;
-            font-size:16px;
-        }
+button{
+    width:100%;
+    padding:12px;
+    margin-top:20px;
+    background:#0077b6;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
 
-        button:hover{
-            background:#005f8d;
-        }
-    </style>
+button:hover{
+    background:#005f8d;
+}
+
+#busCard{
+    display:none;
+    margin-top:20px;
+    background:#f4f9ff;
+    padding:15px;
+    border-radius:10px;
+    border-left:5px solid #0077b6;
+}
+
+.price{
+    color:green;
+    font-weight:bold;
+    margin:10px 0;
+}
+</style>
 
 </head>
-
 <body>
 
 <div class="container">
 
-    <h2>🚌 Bus Booking</h2>
+<h2>🚌 Bus Booking</h2>
 
-    <form>
+<form>
 
-        <label>From</label>
-        <input type="text" placeholder="Enter Source">
+<label>From</label>
+<input list="cities" id="from" placeholder="Enter Source">
 
-        <label>To</label>
-        <input type="text" placeholder="Enter Destination">
+<label>To</label>
+<input list="cities" id="to" placeholder="Enter Destination">
 
-        <label>Date of Journey</label>
-        <input type="date">
+<datalist id="cities">
+<option value="Mumbai">
+<option value="Pune">
+<option value="Kolhapur">
+<option value="Sangli">
+<option value="Ichalkaranji">
+<option value="Satara">
+<option value="Goa">
+<option value="Belagavi">
+<option value="Bengaluru">
+<option value="Hyderabad">
+</datalist>
 
-        <label>Number of Passengers</label>
-        <select>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-        </select>
+<label>Date</label>
+<input type="date">
 
-        <button type="submit">Search Buses</button>
+<label>Passengers</label>
+<select>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+</select>
 
-    </form>
+<button type="button" onclick="searchBus()">Search Bus</button>
+
+</form>
+
+<div id="busCard">
+
+<h3>🚌 Express Travels</h3>
+
+<p><b>Route:</b> <span id="route"></span></p>
+
+<p><b>Time:</b> 8:00 AM → 2:00 PM</p>
+
+<p class="price">Fare: ₹500 / Person</p>
+
+<button onclick="bookBus()">Buy Now</button>
 
 </div>
+
+</div>
+
+<script>
+
+function searchBus(){
+
+let from=document.getElementById("from").value;
+let to=document.getElementById("to").value;
+
+if(from=="" || to==""){
+alert("Please fill all fields.");
+return;
+}
+
+if(from==to){
+alert("Source and Destination cannot be same.");
+return;
+}
+
+document.getElementById("route").innerHTML=from+" ➜ "+to;
+
+document.getElementById("busCard").style.display="block";
+
+}
+
+function bookBus(){
+
+alert("🎉 Booking Successful!\n\nThank you for booking with us.");
+
+}
+
+</script>
 
 </body>
 </html>
