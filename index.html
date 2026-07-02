@@ -4,7 +4,231 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bus Booking App</title>
-    <link rel="stylesheet" href="style.css">
+  
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Booking App</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI',sans-serif;
+        }
+
+        body{
+            background:linear-gradient(135deg,#3d5334,#6d8b52);
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:20px;
+        }
+
+        .screen{
+            display:none;
+            width:100%;
+            max-width:420px;
+            background:#fff;
+            border-radius:25px;
+            padding:25px;
+            box-shadow:0 15px 35px rgba(0,0,0,.25);
+        }
+
+        .screen.active{
+            display:block;
+        }
+
+        h1,h2,h3{
+            color:#2f4f2f;
+        }
+
+        p{
+            color:#666;
+        }
+
+        #splash{
+            text-align:center;
+        }
+
+        .bus{
+            font-size:80px;
+            animation:moveBus 2s infinite alternate;
+        }
+
+        @keyframes moveBus{
+            from{
+                transform:translateX(-20px);
+            }
+            to{
+                transform:translateX(20px);
+            }
+        }
+
+        #splash h1{
+            margin:20px 0;
+            font-size:30px;
+        }
+
+        button{
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:12px;
+            background:#3d5334;
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+            font-weight:600;
+            transition:.3s;
+        }
+
+        button:hover{
+            background:#2d4026;
+            transform:scale(1.03);
+        }
+
+        header{
+            margin-bottom:20px;
+        }
+
+        header h2{
+            font-size:26px;
+        }
+
+        header p{
+            margin-top:5px;
+        }
+
+        .searchBox label{
+            display:block;
+            margin-top:15px;
+            margin-bottom:6px;
+            font-weight:600;
+            color:#333;
+        }
+
+        .searchBox select,
+        .searchBox input{
+            width:100%;
+            padding:12px;
+            border:2px solid #ddd;
+            border-radius:10px;
+            outline:none;
+            font-size:15px;
+        }
+
+        .searchBox select:focus,
+        .searchBox input:focus{
+            border-color:#3d5334;
+        }
+
+        .searchBox button{
+            margin-top:20px;
+        }
+
+        .busCard{
+            background:#f8f8f8;
+            border-radius:18px;
+            padding:18px;
+            margin-top:18px;
+            box-shadow:0 5px 15px rgba(0,0,0,.1);
+            transition:.3s;
+        }
+
+        .busCard:hover{
+            transform:translateY(-5px);
+        }
+
+        .busCard h3{
+            margin-bottom:10px;
+        }
+
+        .busCard p{
+            margin:8px 0;
+        }
+
+        .busCard h2{
+            color:#2e7d32;
+            margin:10px 0;
+        }
+
+        .seatLayout{
+            display:grid;
+            grid-template-columns:repeat(5,50px);
+            gap:12px;
+            justify-content:center;
+            margin:25px 0;
+        }
+
+        .seat{
+            width:45px;
+            height:45px;
+            background:#8bc34a;
+            border-radius:8px;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        .seat:hover{
+            transform:scale(1.1);
+        }
+
+        .seat.selected{
+            background:#ff9800;
+        }
+
+        .seat.booked{
+            background:#777;
+            cursor:not-allowed;
+        }
+
+        .gap{
+            width:20px;
+        }
+
+        #seatPage h3{
+            text-align:center;
+            margin-bottom:20px;
+        }
+
+        .success{
+            text-align:center;
+            padding:20px;
+        }
+
+        .success h1{
+            font-size:70px;
+        }
+
+        .success h2{
+            margin:15px 0;
+        }
+
+        .success p{
+            margin-bottom:20px;
+        }
+
+        @media(max-width:480px){
+            .screen{
+                width:95%;
+                padding:20px;
+            }
+
+            .seatLayout{
+                grid-template-columns:repeat(5,40px);
+                gap:10px;
+            }
+
+            .seat{
+                width:35px;
+                height:35px;
+            }
+        }
+    </style>
 </head>
 <body>
 
