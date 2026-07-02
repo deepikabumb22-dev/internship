@@ -4,408 +4,472 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bus Booking App</title>
-  
-</head>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bus Booking App</title>
-
     <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:'Segoe UI',sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
         }
 
-        body{
-            background:linear-gradient(135deg,#3d5334,#6d8b52);
-            min-height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            padding:20px;
+        body {
+            background: linear-gradient(135deg, #3d5334, #6d8b52);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
-        .screen{
-            display:none;
-            width:100%;
-            max-width:420px;
-            background:#fff;
-            border-radius:25px;
-            padding:25px;
-            box-shadow:0 15px 35px rgba(0,0,0,.25);
+        .screen {
+            display: none;
+            width: 100%;
+            max-width: 420px;
+            background: #fff;
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .25);
+            transition: opacity 0.2s ease;
         }
 
-        .screen.active{
-            display:block;
+        .screen.active {
+            display: block;
         }
 
-        h1,h2,h3{
-            color:#2f4f2f;
+        h1,
+        h2,
+        h3 {
+            color: #2f4f2f;
         }
 
-        p{
-            color:#666;
+        p {
+            color: #666;
         }
 
-        #splash{
-            text-align:center;
+        #splash {
+            text-align: center;
         }
 
-        .bus{
-            font-size:80px;
-            animation:moveBus 2s infinite alternate;
+        .bus {
+            font-size: 80px;
+            animation: moveBus 2s infinite alternate;
         }
 
-        @keyframes moveBus{
-            from{
-                transform:translateX(-20px);
+        @keyframes moveBus {
+            from {
+                transform: translateX(-20px);
             }
-            to{
-                transform:translateX(20px);
+            to {
+                transform: translateX(20px);
             }
         }
 
-        #splash h1{
-            margin:20px 0;
-            font-size:30px;
+        #splash h1 {
+            margin: 20px 0;
+            font-size: 30px;
         }
 
-        button{
-            width:100%;
-            padding:14px;
-            border:none;
-            border-radius:12px;
-            background:#3d5334;
-            color:white;
-            font-size:16px;
-            cursor:pointer;
-            font-weight:600;
-            transition:.3s;
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: #3d5334;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: .3s;
         }
 
-        button:hover{
-            background:#2d4026;
-            transform:scale(1.03);
+        button:hover {
+            background: #2d4026;
+            transform: scale(1.03);
         }
 
-        header{
-            margin-bottom:20px;
+        header {
+            margin-bottom: 20px;
         }
 
-        header h2{
-            font-size:26px;
+        header h2 {
+            font-size: 26px;
         }
 
-        header p{
-            margin-top:5px;
+        header p {
+            margin-top: 5px;
         }
 
-        .searchBox label{
-            display:block;
-            margin-top:15px;
-            margin-bottom:6px;
-            font-weight:600;
-            color:#333;
+        .searchBox label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #333;
         }
 
         .searchBox select,
-        .searchBox input{
-            width:100%;
-            padding:12px;
-            border:2px solid #ddd;
-            border-radius:10px;
-            outline:none;
-            font-size:15px;
+        .searchBox input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+            font-size: 15px;
+            background: white;
         }
 
         .searchBox select:focus,
-        .searchBox input:focus{
-            border-color:#3d5334;
+        .searchBox input:focus {
+            border-color: #3d5334;
         }
 
-        .searchBox button{
-            margin-top:20px;
+        .searchBox button {
+            margin-top: 20px;
         }
 
-        .busCard{
-            background:#f8f8f8;
-            border-radius:18px;
-            padding:18px;
-            margin-top:18px;
-            box-shadow:0 5px 15px rgba(0,0,0,.1);
-            transition:.3s;
+        .busCard {
+            background: #f8f8f8;
+            border-radius: 18px;
+            padding: 18px;
+            margin-top: 18px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+            transition: .3s;
         }
 
-        .busCard:hover{
-            transform:translateY(-5px);
+        .busCard:hover {
+            transform: translateY(-5px);
         }
 
-        .busCard h3{
-            margin-bottom:10px;
+        .busCard h3 {
+            margin-bottom: 10px;
         }
 
-        .busCard p{
-            margin:8px 0;
+        .busCard p {
+            margin: 8px 0;
         }
 
-        .busCard h2{
-            color:#2e7d32;
-            margin:10px 0;
+        .busCard h2 {
+            color: #2e7d32;
+            margin: 10px 0;
         }
 
-        .seatLayout{
-            display:grid;
-            grid-template-columns:repeat(5,50px);
-            gap:12px;
-            justify-content:center;
-            margin:25px 0;
+        .seatLayout {
+            display: grid;
+            grid-template-columns: repeat(5, 50px);
+            gap: 12px;
+            justify-content: center;
+            margin: 25px 0;
         }
 
-        .seat{
-            width:45px;
-            height:45px;
-            background:#8bc34a;
-            border-radius:8px;
-            cursor:pointer;
-            transition:.3s;
+        .seat {
+            width: 45px;
+            height: 45px;
+            background: #8bc34a;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: .2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .seat:hover{
-            transform:scale(1.1);
+        .seat:hover {
+            transform: scale(1.1);
         }
 
-        .seat.selected{
-            background:#ff9800;
+        .seat.selected {
+            background: #ff9800;
         }
 
-        .seat.booked{
-            background:#777;
-            cursor:not-allowed;
+        .seat.booked {
+            background: #777;
+            cursor: not-allowed;
+            opacity: 0.7;
         }
 
-        .gap{
-            width:20px;
+        .gap {
+            width: 20px;
+            visibility: hidden;
         }
 
-        #seatPage h3{
-            text-align:center;
-            margin-bottom:20px;
+        #seatPage h3 {
+            text-align: center;
+            margin-bottom: 20px;
         }
 
-        .success{
-            text-align:center;
-            padding:20px;
+        .success {
+            text-align: center;
+            padding: 20px;
         }
 
-        .success h1{
-            font-size:70px;
+        .success h1 {
+            font-size: 70px;
         }
 
-        .success h2{
-            margin:15px 0;
+        .success h2 {
+            margin: 15px 0;
         }
 
-        .success p{
-            margin-bottom:20px;
+        .success p {
+            margin-bottom: 20px;
         }
 
-        @media(max-width:480px){
-            .screen{
-                width:95%;
-                padding:20px;
+        .back-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #3d5334;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        @media(max-width:480px) {
+            .screen {
+                width: 95%;
+                padding: 20px;
             }
 
-            .seatLayout{
-                grid-template-columns:repeat(5,40px);
-                gap:10px;
+            .seatLayout {
+                grid-template-columns: repeat(5, 40px);
+                gap: 10px;
             }
 
-            .seat{
-                width:35px;
-                height:35px;
+            .seat {
+                width: 35px;
+                height: 35px;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- Splash Screen -->
-<div id="splash" class="screen active">
-    <div class="bus">
-        🚌
+    <!-- Splash Screen -->
+    <div id="splash" class="screen active">
+        <div class="bus">🚌</div>
+        <h1>Bus Booking App</h1>
+        <button onclick="showHome()">Get Started</button>
     </div>
 
-    <h1>Bus Booking App</h1>
+    <!-- Home Screen -->
+    <div id="home" class="screen">
+        <header>
+            <h2>Hello Deepika 👋</h2>
+            <p>Where do you want to go?</p>
+        </header>
+        <div class="searchBox">
+            <label>Boarding From</label>
+            <select id="from">
+                <option>Pune</option>
+                <option>Mumbai</option>
+                <option>Kolhapur</option>
+                <option>Delhi</option>
+                <option>Gujrat</option>
+            </select>
 
-    <button onclick="showHome()">Get Started</button>
-</div>
+            <label>Destination</label>
+            <select id="to">
+                <option>Mumbai</option>
+                <option>Pune</option>
+                <option>Kolhapur</option>
+                <option>Delhi</option>
+                <option>Gujrat</option>
+            </select>
 
-<!-- Home Screen -->
-<div id="home" class="screen">
+            <label>Date</label>
+            <input type="date" id="date">
 
-    <header>
-        <h2>Hello Deepika 👋</h2>
-        <p>Where do you want to go?</p>
-    </header>
-
-    <div class="searchBox">
-
-        <label>Boarding From</label>
-        <select id="from">
-            <option>Pune</option>
-            <option>Mumbai</option>
-            <option>Kolhapur</option>
-            <option>Delhi</option>
-            <option>Gujrat</option>
-        </select>
-
-        <label>Destination</label>
-        <select id="to">
-            <option>Mumbai</option>
-            <option>Pune</option>
-            <option>Kolhapur</option>
-            <option>Delhi</option>
-            <option>Gujrat</option>
-        </select>
-
-        <label>Date</label>
-        <input type="date" id="date">
-
-        <button onclick="searchBus()">
-            Find Buses
-        </button>
-
+            <button onclick="searchBus()">Find Buses</button>
+        </div>
     </div>
 
-</div>
+    <!-- Bus List -->
+    <div id="busList" class="screen">
+        <h2>Available Buses</h2>
 
-<!-- Bus List -->
-<div id="busList" class="screen">
+        <div class="busCard">
+            <h3>Sangitam Travels</h3>
+            <p>🕕 6:00 PM → 3:00 AM</p>
+            <p>Seats Left : 15</p>
+            <h2>₹600</h2>
+            <button onclick="openSeats(600)">Select Seat</button>
+        </div>
 
-<h2>Available Buses</h2>
+        <div class="busCard">
+            <h3>Shree Travels</h3>
+            <p>🕗 8:00 PM → 5:30 AM</p>
+            <p>Seats Left : 10</p>
+            <h2>₹550</h2>
+            <button onclick="openSeats(550)">Select Seat</button>
+        </div>
 
-<div class="busCard">
+        <div class="busCard">
+            <h3>Royal Express</h3>
+            <p>🕘 9:00 PM → 6:00 AM</p>
+            <p>Seats Left : 7</p>
+            <h2>₹700</h2>
+            <button onclick="openSeats(700)">Select Seat</button>
+        </div>
 
-<h3>Sangitam Travels</h3>
+        <!-- small back link to home -->
+        <div style="margin-top: 16px; text-align: center;">
+            <span class="back-link" onclick="showHome()">← Back to search</span>
+        </div>
+    </div>
 
-<p>🕕 6:00 PM → 3:00 AM</p>
+    <!-- Seat Selection -->
+    <div id="seatPage" class="screen">
+        <h2>Select Your Seat</h2>
+        <div class="seatLayout">
+            <!-- row 1 -->
+            <div class="seat" onclick="bookSeat(this)"></div>
+            <div class="seat" onclick="bookSeat(this)"></div>
+            <div class="gap"></div>
+            <div class="seat" onclick="bookSeat(this)"></div>
+            <div class="seat" onclick="bookSeat(this)"></div>
 
-<p>Seats Left : 15</p>
+            <!-- row 2 -->
+            <div class="seat" onclick="bookSeat(this)"></div>
+            <div class="seat" onclick="bookSeat(this)"></div>
+            <div class="gap"></div>
+            <div class="seat" onclick="bookSeat(this)"></div>
+            <div class="seat" onclick="bookSeat(this)"></div>
 
-<h2>₹600</h2>
+            <!-- row 3 -->
+            <div class="seat" onclick="bookSeat(this)"></div>
+            <div class="seat" onclick="bookSeat(this)"></div>
+            <div class="gap"></div>
+            <div class="seat" onclick="bookSeat(this)"></div>
+            <div class="seat" onclick="bookSeat(this)"></div>
 
-<button onclick="openSeats(600)">
-Select Seat
-</button>
+            <!-- row 4 -->
+            <div class="seat" onclick="bookSeat(this)"></div>
+            <div class="seat" onclick="bookSeat(this)"></div>
+            <div class="gap"></div>
+            <div class="seat" onclick="bookSeat(this)"></div>
+            <div class="seat" onclick="bookSeat(this)"></div>
+        </div>
 
-</div>
+        <h3>Total : ₹<span id="total">0</span></h3>
+        <button onclick="confirmBooking()">Book Ticket</button>
+        <div style="margin-top: 12px; text-align: center;">
+            <span class="back-link" onclick="showBusList()">← Back to buses</span>
+        </div>
+    </div>
 
-<div class="busCard">
+    <!-- Confirmation -->
+    <div id="confirm" class="screen">
+        <div class="success">
+            <h1>✅</h1>
+            <h2>Booking Successful!</h2>
+            <p>Your ticket has been booked.</p>
+            <button onclick="location.reload()">Book Another</button>
+        </div>
+    </div>
 
-<h3>Shree Travels</h3>
+    <script>
+        let ticketPrice = 0;
+        let selectedSeat = null;
 
-<p>🕗 8:00 PM → 5:30 AM</p>
+        // Helper: hide all screens
+        function hideAllScreens() {
+            document.querySelectorAll(".screen").forEach(screen => {
+                screen.classList.remove("active");
+            });
+        }
 
-<p>Seats Left : 10</p>
+        // Show home screen
+        function showHome() {
+            hideAllScreens();
+            document.getElementById("home").classList.add("active");
+        }
 
-<h2>₹550</h2>
+        // Show bus list (called from search)
+        function searchBus() {
+            // simple validation: if date is empty, alert
+            const dateInput = document.getElementById('date');
+            if (!dateInput.value) {
+                alert('Please select a travel date.');
+                return;
+            }
+            hideAllScreens();
+            document.getElementById("busList").classList.add("active");
+        }
 
-<button onclick="openSeats(550)">
-Select Seat
-</button>
+        // Show bus list directly (from seat page back)
+        function showBusList() {
+            hideAllScreens();
+            document.getElementById("busList").classList.add("active");
+        }
 
-</div>
+        // Open seat selection for a given price
+        function openSeats(price) {
+            ticketPrice = price;
+            selectedSeat = null;
 
-<div class="busCard">
+            // reset seat styling: clear selected, but keep booked (if any)
+            document.querySelectorAll(".seat").forEach(seat => {
+                seat.classList.remove("selected");
+                // optionally, we could keep booked state as is
+            });
 
-<h3>Royal Express</h3>
+            document.getElementById("total").innerText = "0";
 
-<p>🕘 9:00 PM → 6:00 AM</p>
+            hideAllScreens();
+            document.getElementById("seatPage").classList.add("active");
+        }
 
-<p>Seats Left : 7</p>
+        // Book a seat (select/deselect)
+        function bookSeat(seat) {
+            if (seat.classList.contains("booked")) return;
 
-<h2>₹700</h2>
+            // If the clicked seat is already selected, deselect it
+            if (seat.classList.contains("selected")) {
+                seat.classList.remove("selected");
+                selectedSeat = null;
+                document.getElementById("total").innerText = "0";
+                return;
+            }
 
-<button onclick="openSeats(700)">
-Select Seat
-</button>
+            // Otherwise, deselect any previously selected seat, then select this one
+            document.querySelectorAll(".seat").forEach(s => {
+                s.classList.remove("selected");
+            });
 
-</div>
+            seat.classList.add("selected");
+            selectedSeat = seat;
+            document.getElementById("total").innerText = ticketPrice;
+        }
 
-</div>
+        // Confirm booking
+        function confirmBooking() {
+            if (!selectedSeat) {
+                alert("Please select a seat first!");
+                return;
+            }
 
-<!-- Seat Selection -->
-<div id="seatPage" class="screen">
+            // Mark seat as booked
+            selectedSeat.classList.remove("selected");
+            selectedSeat.classList.add("booked");
+            selectedSeat = null;
 
-<h2>Select Your Seat</h2>
+            // Reset total display
+            document.getElementById("total").innerText = "0";
 
-<div class="seatLayout">
+            hideAllScreens();
+            document.getElementById("confirm").classList.add("active");
+        }
 
-<div class="seat" onclick="bookSeat(this)"></div>
-<div class="seat" onclick="bookSeat(this)"></div>
-
-<div class="gap"></div>
-
-<div class="seat" onclick="bookSeat(this)"></div>
-<div class="seat" onclick="bookSeat(this)"></div>
-
-<div class="seat" onclick="bookSeat(this)"></div>
-<div class="seat" onclick="bookSeat(this)"></div>
-
-<div class="gap"></div>
-
-<div class="seat" onclick="bookSeat(this)"></div>
-<div class="seat" onclick="bookSeat(this)"></div>
-
-<div class="seat" onclick="bookSeat(this)"></div>
-<div class="seat" onclick="bookSeat(this)"></div>
-
-<div class="gap"></div>
-
-<div class="seat" onclick="bookSeat(this)"></div>
-<div class="seat" onclick="bookSeat(this)"></div>
-
-<div class="seat" onclick="bookSeat(this)"></div>
-<div class="seat" onclick="bookSeat(this)"></div>
-
-<div class="gap"></div>
-
-<div class="seat" onclick="bookSeat(this)"></div>
-<div class="seat" onclick="bookSeat(this)"></div>
-
-</div>
-
-<h3>Total : ₹<span id="total">0</span></h3>
-
-<button onclick="confirmBooking()">
-Book Ticket
-</button>
-
-</div>
-
-<!-- Confirmation -->
-<div id="confirm" class="screen">
-
-<div class="success">
-
-<h1>✅</h1>
-
-<h2>Booking Successful!</h2>
-
-<p>Your ticket has been booked.</p>
-
-<button onclick="location.reload()">
-Book Another
-</button>
-
-</div>
-
-</div>
-
-<script src="script.js"></script>
-
+        // (Optional) Pre-book some seats for demo: mark first two as booked
+        window.addEventListener('DOMContentLoaded', function() {
+            const allSeats = document.querySelectorAll('.seat');
+            if (allSeats.length >= 2) {
+                // mark first and third as booked to show variety
+                allSeats[0].classList.add('booked');
+                allSeats[2].classList.add('booked');
+                // also mark one in second row
+                if (allSeats.length > 5) {
+                    allSeats[5].classList.add('booked');
+                }
+            }
+        });
+    </script>
 </body>
 </html>
