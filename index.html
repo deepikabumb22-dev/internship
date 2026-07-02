@@ -1,175 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bus Booking System</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
-
-body{
-    background:linear-gradient(135deg,#4facfe,#00f2fe);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-}
-
-.container{
-    width:420px;
-    background:white;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 10px 20px rgba(0,0,0,.2);
-}
-
-h2{
-    text-align:center;
-    color:#0077b6;
-    margin-bottom:20px;
-}
-
-label{
-    display:block;
-    margin-top:12px;
-    font-weight:bold;
-}
-
-input,select{
-    width:100%;
-    padding:10px;
-    margin-top:5px;
-    border:1px solid #ccc;
-    border-radius:8px;
-}
-
-button{
-    width:100%;
-    padding:12px;
-    margin-top:20px;
-    background:#0077b6;
-    color:white;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:16px;
-}
-
-button:hover{
-    background:#005f8d;
-}
-
-#busCard{
-    display:none;
-    margin-top:20px;
-    background:#f4f9ff;
-    padding:15px;
-    border-radius:10px;
-    border-left:5px solid #0077b6;
-}
-
-.price{
-    color:green;
-    font-weight:bold;
-    margin:10px 0;
-}
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Booking App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
+<!-- Splash Screen -->
+<div id="splash" class="screen active">
+    <div class="bus">
+        🚌
+    </div>
 
-<h2>🚌 Bus Booking</h2>
+    <h1>Bus Booking App</h1>
 
-<form>
+    <button onclick="showHome()">Get Started</button>
+</div>
 
-<label>From</label>
-<input list="cities" id="from" placeholder="Enter Source">
+<!-- Home Screen -->
+<div id="home" class="screen">
 
-<label>To</label>
-<input list="cities" id="to" placeholder="Enter Destination">
+    <header>
+        <h2>Hello Deepika 👋</h2>
+        <p>Where do you want to go?</p>
+    </header>
 
-<datalist id="cities">
-<option value="Mumbai">
-<option value="Pune">
-<option value="Kolhapur">
-<option value="Sangli">
-<option value="Ichalkaranji">
-<option value="Satara">
-<option value="Goa">
-<option value="Belagavi">
-<option value="Bengaluru">
-<option value="Hyderabad">
-</datalist>
+    <div class="searchBox">
 
-<label>Date</label>
-<input type="date">
+        <label>Boarding From</label>
+        <select id="from">
+            <option>Pune</option>
+            <option>Mumbai</option>
+            <option>Kolhapur</option>
+            <option>Delhi</option>
+            <option>Gujrat</option>
+        </select>
 
-<label>Passengers</label>
-<select>
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-</select>
+        <label>Destination</label>
+        <select id="to">
+            <option>Mumbai</option>
+            <option>Pune</option>
+            <option>Kolhapur</option>
+            <option>Delhi</option>
+            <option>Gujrat</option>
+        </select>
 
-<button type="button" onclick="searchBus()">Search Bus</button>
+        <label>Date</label>
+        <input type="date" id="date">
 
-</form>
+        <button onclick="searchBus()">
+            Find Buses
+        </button>
 
-<div id="busCard">
+    </div>
 
-<h3>🚌 Express Travels</h3>
+</div>
 
-<p><b>Route:</b> <span id="route"></span></p>
+<!-- Bus List -->
+<div id="busList" class="screen">
 
-<p><b>Time:</b> 8:00 AM → 2:00 PM</p>
+<h2>Available Buses</h2>
 
-<p class="price">Fare: ₹500 / Person</p>
+<div class="busCard">
 
-<button onclick="bookBus()">Buy Now</button>
+<h3>Sangitam Travels</h3>
+
+<p>🕕 6:00 PM → 3:00 AM</p>
+
+<p>Seats Left : 15</p>
+
+<h2>₹600</h2>
+
+<button onclick="openSeats(600)">
+Select Seat
+</button>
+
+</div>
+
+<div class="busCard">
+
+<h3>Shree Travels</h3>
+
+<p>🕗 8:00 PM → 5:30 AM</p>
+
+<p>Seats Left : 10</p>
+
+<h2>₹550</h2>
+
+<button onclick="openSeats(550)">
+Select Seat
+</button>
+
+</div>
+
+<div class="busCard">
+
+<h3>Royal Express</h3>
+
+<p>🕘 9:00 PM → 6:00 AM</p>
+
+<p>Seats Left : 7</p>
+
+<h2>₹700</h2>
+
+<button onclick="openSeats(700)">
+Select Seat
+</button>
 
 </div>
 
 </div>
 
-<script>
+<!-- Seat Selection -->
+<div id="seatPage" class="screen">
 
-function searchBus(){
+<h2>Select Your Seat</h2>
 
-let from=document.getElementById("from").value;
-let to=document.getElementById("to").value;
+<div class="seatLayout">
 
-if(from=="" || to==""){
-alert("Please fill all fields.");
-return;
-}
+<div class="seat" onclick="bookSeat(this)"></div>
+<div class="seat" onclick="bookSeat(this)"></div>
 
-if(from==to){
-alert("Source and Destination cannot be same.");
-return;
-}
+<div class="gap"></div>
 
-document.getElementById("route").innerHTML=from+" ➜ "+to;
+<div class="seat" onclick="bookSeat(this)"></div>
+<div class="seat" onclick="bookSeat(this)"></div>
 
-document.getElementById("busCard").style.display="block";
+<div class="seat" onclick="bookSeat(this)"></div>
+<div class="seat" onclick="bookSeat(this)"></div>
 
-}
+<div class="gap"></div>
 
-function bookBus(){
+<div class="seat" onclick="bookSeat(this)"></div>
+<div class="seat" onclick="bookSeat(this)"></div>
 
-alert("🎉 Booking Successful!\n\nThank you for booking with us.");
+<div class="seat" onclick="bookSeat(this)"></div>
+<div class="seat" onclick="bookSeat(this)"></div>
 
-}
+<div class="gap"></div>
 
-</script>
+<div class="seat" onclick="bookSeat(this)"></div>
+<div class="seat" onclick="bookSeat(this)"></div>
+
+<div class="seat" onclick="bookSeat(this)"></div>
+<div class="seat" onclick="bookSeat(this)"></div>
+
+<div class="gap"></div>
+
+<div class="seat" onclick="bookSeat(this)"></div>
+<div class="seat" onclick="bookSeat(this)"></div>
+
+</div>
+
+<h3>Total : ₹<span id="total">0</span></h3>
+
+<button onclick="confirmBooking()">
+Book Ticket
+</button>
+
+</div>
+
+<!-- Confirmation -->
+<div id="confirm" class="screen">
+
+<div class="success">
+
+<h1>✅</h1>
+
+<h2>Booking Successful!</h2>
+
+<p>Your ticket has been booked.</p>
+
+<button onclick="location.reload()">
+Book Another
+</button>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
